@@ -97,7 +97,7 @@
 								   <span class="mini-click-non">Ecommerce</span>
 								</a>
                             <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href="index.html"><span class="mini-sub-pro">Statistique</span></a></li>
+                                <li><a title="Dashboard v.1" href="statistique.php"><span class="mini-sub-pro">Statistique</span></a></li>
                                <!-- <li><a title="Dashboard v.2" href="index-1.html"><span class="mini-sub-pro">Dashboard v.2</span></a></li>
                                 <li><a title="Dashboard v.3" href="index-2.html"> <span class="mini-sub-pro">Dashboard v.3</span></a></li>-->
                                 <li><a title="Product List" href="product-list.php"><span class="mini-sub-pro">Product List</span></a></li>
@@ -961,7 +961,8 @@
                                                     </div>
                                                     <div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                        <input type="text" class="form-control" name="prix" placeholder="Prix" pattern="[0-9.' ]{1,}" oninvalid="setCustomValidity('please insert only numbers [0-9]')">
+                                                        <input type="text" class="form-control" name="prix" placeholder="Prix" pattern="[0-9.' ]{1,}" id="PrixV">
+                                                        <!-- oninvalid="setCustomValidity('please insert only numbers [0-9]')"-->
                                                     </div>
                                                     <!--<div class="input-group mg-b-pro-edt">
                                                         <span class="input-group-addon"><i class="icon nalika-new-file" aria-hidden="true"></i></span>
@@ -996,9 +997,11 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <p id="errorText" style="display:none;
+                                                        color:red;">format prix erroné</p>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="text-center custom-pro-edt-ds">
-                                                    <input type="submit" name="" type="button" name="ins" class="btn btn-ctl-bt waves-effect waves-light m-r-10"value="Save">
+                                                    <input type="submit" name="" type="button" name="ins" class="btn btn-ctl-bt waves-effect waves-light m-r-10"value="Save" id="bouton">
                                                     <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Discard
 														</button>
                                                 </div>
@@ -1006,6 +1009,18 @@
                                         </div>
                                     </div>
                                 </form>
+
+                                <script>
+                                    var prix = document.getElementById("PrixV");
+                                    error =document.getElementById('errorText');
+                                 document.querySelector("#bouton").addEventListener("click",function(event){
+                                    if (isNaN(prix.value))
+                                    {
+                                        event.preventDefault();
+                                        error.style.display ='block';
+
+                                    }
+                                },false); </script>
 
                                 </div>
                             </div>

@@ -1,5 +1,5 @@
 <?PHP
-include "../../config/config.php";
+include "../config/config.php";
 class CollectionR {
 	
 	public static function ajouterCollection ($Categorie_classe)

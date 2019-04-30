@@ -1,5 +1,5 @@
 <?PHP
-include "config.php";
+include "../config/config.php";
 
 class ArticleR {
 	
@@ -36,23 +36,72 @@ class ArticleR {
 			</div>'; 			
 				}	
 	}
+			function afficherProduits1(){
+		//$sql="SElECT * From employe e inner join formationphp.employe a on e.cin= a.cin";
+		$sql="SElECT * From produit";
+		$cat=$_GET['cat'];
+$art="select * from produit where id_ca=".$cat."";
+		$db = config::getConnexion();
+		try{
+		$liste=$db->query($art);
+		return $liste;
+		}
+        catch (Exception $e){
+            die('Erreur: '.$e->getMessage());
+        }	
+	}
 	function afficherArticleB()
 	{
 		$sql='SELECT * FROM produit';
 		$db = config::getConnexion();
+				$con = new PDO('mysql:host=localhost;dbname=projet2a;port=3308', 'root','');
+
+	if (isset($_POST['liked'])) {
+		$postid = $_POST['postid'];
+		$result = $con->prepare("SELECT * FROM posts WHERE id=$postid");
+		$row = mysqli_fetch_array($result);
+		$n = $row['likes'];
+
+		mysqli_query($con, "INSERT INTO likes (userid, postid) VALUES (1, $postid)");
+		mysqli_query($con, "UPDATE posts SET likes=$n+1 WHERE id=$postid");
+
+		echo $n+1;
+		exit();
+	}
+	if (isset($_POST['unliked'])) {
+		$postid = $_POST['postid'];
+		$result = mysqli_query($con, "SELECT * FROM posts WHERE id=$postid");
+		$row = mysqli_fetch_array($result);
+		$n = $row['likes'];
+
+		mysqli_query($con, "DELETE FROM likes WHERE postid=$postid AND userid=1");
+		mysqli_query($con, "UPDATE posts SET likes=$n-1 WHERE id=$postid");
+		
+		echo $n-1;
+		exit();
+	}
+
+	// Retrieve posts from the database
+	$posts = $con->prepare("SELECT * FROM posts");
+	$posts->execute();
 				foreach  ($db->query($sql) as $row)
 				{
 					echo'<tr>
                                     <td><img src="image/'.$row['image'].'"></td>
+                            
                                     <td>'.$row['ref'].'</td>
+                           
                                     <td>
                                         '.$row['nom'].'
                                     </td>
+                    
                                     <td>
                                     	'.$row['description'].'
                                     </td>
+               
                                     <td>'.$row['prix'].'</td>
                                     <td>
+	
 	
                                     
                                         

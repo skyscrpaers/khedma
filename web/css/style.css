@@ -3689,7 +3689,7 @@ td.invert-image a img {
 	}
 	.w3ls_products_pos img {
 		margin: 0 auto;
-		width: 35%;
+		width: 100%;
 	}
 	.col-sm-3:nth-child(2) {
 		margin:3em 0;

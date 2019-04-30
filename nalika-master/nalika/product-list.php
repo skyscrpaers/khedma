@@ -96,7 +96,7 @@
 								   <span class="mini-click-non">Ecommerce</span>
 								</a>
                                                         <ul class="submenu-angle" aria-expanded="true">
-                                <li><a title="Dashboard v.1" href="index.html"><span class="mini-sub-pro">Statistique</span></a></li>
+                                <li><a title="Dashboard v.1" href="statistique.php"><span class="mini-sub-pro">Statistique</span></a></li>
                                <!-- <li><a title="Dashboard v.2" href="index-1.html"><span class="mini-sub-pro">Dashboard v.2</span></a></li>
                                 <li><a title="Dashboard v.3" href="index-2.html"> <span class="mini-sub-pro">Dashboard v.3</span></a></li>-->
                                 <li><a title="Product List" href="product-list.php"><span class="mini-sub-pro">Product List</span></a></li>
@@ -952,7 +952,10 @@
 
                                     <th onclick="sortTable(2)">prix</th>
                                     <th>Edit</th>
-                                    <th>Delete</th>
+                                    <th>Delete
+
+
+                                    </th>
                                 </tr>
                                 <?php
                                 include "../../core/Produit.php";

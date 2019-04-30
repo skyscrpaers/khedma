@@ -40,6 +40,14 @@ class ArticleR {
 	{
 		$sql='SELECT * FROM produit';
 		$db = config::getConnexion();
+	
+
+
+
+
+
+
+
 				foreach  ($db->query($sql) as $row)
 				{
 					echo'<tr>
@@ -52,6 +60,7 @@ class ArticleR {
                                     	'.$row['description'].'
                                     </td>
                                     <td>'.$row['prix'].'</td>
+                                    
                                     <td>
                                     <form method="POST" action="product-edit.php">
                                         <button type="submit" name="id" value="'.$row['ref'].'" id="'.$row['ref'].'" style=" padding: 5px 10px;font-size: 14px;border-radius: 3px;border: 1px solid rgba(0,0,0,.12);background: #152036;" class="edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
